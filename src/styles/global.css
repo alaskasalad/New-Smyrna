@@ -44,10 +44,12 @@ body {
 	line-height: 1.7;
 }
 main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
+	align-items: center;
+  	display: flex;
+  	flex: 1;
+  	justify-content: center;
+  	margin: 2em 0;
+  	min-height: 400px;
 }
 h1,
 h2,

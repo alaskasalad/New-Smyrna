@@ -13,3 +13,21 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'SigmarOne-Regular';
+  /* Make sure the file extension (.ttf, .woff2, etc.) matches your file */
+  src: url('/fonts/SigmarOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ClimateCrisis-Regular-VariableFont_YEAR';
+  /* Make sure the file extension (.ttf, .woff2, etc.) matches your file */
+  src: url('/fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

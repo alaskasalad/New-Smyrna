@@ -1,0 +1,92 @@
+---
+import { ClientRouter } from 'astro:transitions';
+---
+<head>
+  <ClientRouter />
+</head>
+
+<div class="cursor"></div>
+
+<script is:inline>
+    // const cursor = document.querySelector('.cursor') as HTMLElement;
+
+    let mouseX = 0; 
+    let mouseY = 0;
+    let circleX = 0;
+    let circleY = 0; 
+
+    // spring physics
+    let vx = 0; 
+    let vy = 0; 
+    const stiffness = 0.09; 
+    const friction = 0.5; 
+    const speed = 0.15; 
+
+    function initCursor () {
+        const cursor = document.querySelector('.cursor'); 
+        if (!cursor) return; 
+
+        const onMouseMove = (e) => {
+            mouseX = e.clientX; 
+            mouseY = e.clientY; 
+        };
+        document.removeEventListener('mousemove', onMouseMove);
+        document.addEventListener('mousemove', onMouseMove); 
+
+        function animate() {
+            // distance from mouse to circle 
+            let dx = mouseX - circleX; 
+            let dy = mouseY - circleY; 
+
+            // acceleration 
+            let ax = dx * stiffness; 
+            let ay = dy * stiffness; 
+
+            // velocity 
+            vx += ax; 
+            vy += ay; 
+
+            // friction 
+            vx *= friction; 
+            vy *= friction; 
+
+            circleX += vx;  
+            circleY += vy; 
+
+            const currentCursor = document.querySelector('.cursor'); 
+            if (currentCursor) {
+                cursor.style.transform = `translate3d(${circleX-20}px, ${circleY - 20}px, 0)`;
+            }
+
+            requestAnimationFrame(animate); 
+        }
+
+        animate();
+    }
+
+    initCursor(); 
+    document.addEventListener('astro:after-swap', initCursor); 
+
+     
+    // document.addEventListener('astro:after-swap', () => {
+    //     // Re-sync positions after page swap
+    //     mouseX = Number(sessionStorage.getItem('mouseX')) || window.innerWidth / 2;
+    //     mouseY = Number(sessionStorage.getItem('mouseY')) || window.innerHeight / 2;
+    // });
+</script>
+
+<style>
+  .cursor {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    view-transition-name: custom-cursor;
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-title: 'First Blog'
+title: 'Week 1'
 description: 'Orientation Week'
 pubDate: 'Jan 17 2026'
 ---

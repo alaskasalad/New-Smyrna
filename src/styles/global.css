@@ -31,3 +31,10 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
+#container3D {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}

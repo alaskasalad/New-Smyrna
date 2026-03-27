@@ -1,7 +1,7 @@
 ---
 title: 'Week 10'
 description: 'tenth week'
-pubDate: 'March 13 2026'
+pubDate: 'March 27 2026'
 ---
 
 <h4>General updates</h4>
